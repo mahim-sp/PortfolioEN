@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mahim Sathya Prakash – Adobe Workfront Senior Developer</title>
+<meta name="description" content="Portfolio of Mahim Sathya Prakash, an Adobe Workfront senior developer in Bengaluru working on workflow automation and enterprise integrations.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A0C10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0C10'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23E8412E' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --bg:#0A0C10;--bg-2:#0E1116;--s1:#13171E;--s2:#191E26;--s3:#20262F;
+  --ink:#EDE7E1;--ink-2:#B3AAA2;--ink-3:#7F776F;
+  --line:rgba(237,231,225,.08);--line-2:rgba(237,231,225,.16);
+  --red:#E8412E;--red-press:#D23725;
+  --ember:#E2AA8A;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --sans:Geist,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --ease-out:cubic-bezier(.23,1,.32,1);--ease-io:cubic-bezier(.77,0,.175,1);
+  --e1:inset 0 1px 0 rgba(255,255,255,.04),0 1px 2px rgba(0,0,0,.4),0 10px 24px -14px rgba(0,0,0,.7);
+  --e2:inset 0 1px 0 rgba(255,255,255,.06),0 2px 6px rgba(0,0,0,.35),0 30px 60px -24px rgba(0,0,0,.85);
+  --e3:inset 0 1px 0 rgba(255,255,255,.07),0 4px 12px rgba(0,0,0,.4),0 50px 100px -30px rgba(0,0,0,.95);
+  --gut:clamp(1rem,4.5vw,3rem);--max:1240px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:6rem;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink-2);font:400 1.0625rem/1.65 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body:has(dialog[open]){overflow:hidden}
+/* film grain: the top-most layer */
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+h1,h2,h3,h4{margin:0;color:var(--ink);font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1.02;font-optical-sizing:auto}
+p{margin:0 0 1em;max-width:64ch}
+a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line-2);text-decoration-thickness:1px;text-underline-offset:.3em;transition:text-decoration-color .2s ease}
+a:hover{text-decoration-color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+::selection{background:var(--red);color:#fff}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.mono{font:500 .75rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.label{display:flex;align-items:center;gap:.75rem;margin:0 0 1.25rem}
+.label::before{content:"";width:1.5rem;height:1px;background:var(--line-2)}
+
+/* ============ Header ============ */
+/* --hb: 1 at the very top (bar at its largest), easing to 0 over the first ~500px of scroll (set in JS) */
+.bar{--hb:1;position:fixed;z-index:50;top:calc(max(12px,env(safe-area-inset-top)) + 8px*var(--hb));left:50%;translate:-50% 0;width:min(var(--max),calc(100% - 2*var(--gut)));height:calc(56px + 16px*var(--hb));display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 calc(.5rem + .4rem*var(--hb)) 0 calc(.75rem + .4rem*var(--hb));border:1px solid var(--line);border-radius:calc(16px + 4px*var(--hb));background:rgba(14,17,22,.45);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:var(--e1);transition:background-color .3s ease,border-color .3s ease}
+.bar.solid{background:rgba(14,17,22,.82);border-color:var(--line-2)}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink);font:500 calc(.9375rem + .1875rem*var(--hb))/1 var(--sans);letter-spacing:-.01em;white-space:nowrap}
+.mark{width:calc(32px + 8px*var(--hb));height:calc(32px + 8px*var(--hb));display:grid;place-items:center;border-radius:9px;background:var(--s3);box-shadow:inset 0 1px 0 rgba(255,255,255,.08);font:600 .6875rem/1 var(--mono);letter-spacing:.04em;color:var(--ink)}
+.bar nav{display:flex;align-items:center;gap:.25rem}
+.nl{padding:.5rem .7rem;border-radius:10px;color:var(--ink-2);text-decoration:none;font:500 calc(.875rem + .0625rem*var(--hb))/1 var(--sans);transition:color .2s ease,background-color .2s ease}
+.nl:hover{color:var(--ink);background:rgba(237,231,225,.06)}
+.nb{margin-left:.35rem;padding:.6rem .95rem;border:1px solid var(--line-2);border-radius:11px;background:var(--s2);color:var(--ink);font:500 .8125rem/1 var(--sans);cursor:pointer;box-shadow:var(--e1);transition:transform .16s var(--ease-out),background-color .2s ease}
+.nb:hover{background:var(--s3)}.nb:active{transform:scale(.97)}
+@media(max-width:560px){.brand .bn{display:none}.nl{padding:.5rem .5rem;font-size:.8125rem}.nb{margin-left:.15rem;padding:.55rem .75rem}}
+
+/* ============ Hero ============ */
+/* the hero is pinned for ⅔ of a screen of scroll while #work slides up over it */
+.hero-pin{position:relative;height:166.667vh;height:166.667svh}
+.hero{position:sticky;top:0;isolation:isolate;overflow:hidden;height:100vh;height:100svh;background:
+  radial-gradient(60% 55% at 50% 44%,rgba(226,170,138,.075),transparent 70%),
+  radial-gradient(120% 80% at 50% 120%,rgba(0,0,0,.6),transparent 60%),var(--bg)}
+/* far layer: a faint dot lattice, masked to the centre */
+.hero::before{content:"";position:absolute;inset:-10%;z-index:-3;background-image:radial-gradient(rgba(237,231,225,.12) 1px,transparent 1.2px);background-size:28px 28px;-webkit-mask-image:radial-gradient(55% 50% at 50% 45%,#000,transparent 75%);mask-image:radial-gradient(55% 50% at 50% 45%,#000,transparent 75%);opacity:.5;transform:translate3d(var(--px,0),var(--py,0),0)}
+#wf,#orb{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:pan-y}
+#wf{z-index:-3}#orb{z-index:-2}
+.dim{position:absolute;inset:0;z-index:5;pointer-events:none;background:#05060A;opacity:0}
+.hero-in{position:relative;height:100%;max-width:var(--max);will-change:transform,opacity;margin:0 auto;display:grid;grid-template-rows:auto 1fr auto;padding:calc(96px + env(safe-area-inset-top)) var(--gut) calc(clamp(1.5rem,4vh,2.75rem) + env(safe-area-inset-bottom));pointer-events:none}
+.hero-in a,.hero-in button,.hero-in .name{pointer-events:auto}
+.hero-top{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.hero-top a{color:var(--ink-3);text-decoration:none}.hero-top a:hover{color:var(--ink)}
+@media(max-width:600px){.hero-top>span{display:none}.hero-top{justify-content:flex-end}}
+.hero-mid{display:flex;align-items:center;justify-content:space-between;gap:2rem;position:relative}
+.side{max-width:15rem;will-change:transform}
+.side .mono{display:block;margin-bottom:.6rem}
+.side p{margin:0;color:var(--ink);font:400 1.0625rem/1.45 var(--sans);letter-spacing:-.01em}
+.side.r{text-align:right}
+.hint{position:absolute;left:50%;bottom:clamp(.5rem,6vh,3rem);translate:-50% 0;display:flex;align-items:center;gap:.5rem;white-space:nowrap;transition:opacity .6s ease}
+.hint i{width:6px;height:6px;border-radius:50%;background:var(--ember);box-shadow:0 0 0 4px rgba(226,170,138,.14)}
+.hint.gone{opacity:0}
+@media(max-width:899px){.side{display:none}}
+@media(hover:none){.hint .hf{display:none}}@media(hover:hover){.hint .ht{display:none}}
+.hero-bot{will-change:transform}
+/* name: shows "Mahim SP"; scrolling, hovering, focusing or tapping unfolds the hidden letters
+   (decoded one by one) while the line scales down to stay inside its column */
+.name{position:relative;height:.92em;margin:0 0 1.4rem;font:700 clamp(3.2rem,12.5vw,10.5rem)/.9 var(--display);font-variation-settings:"opsz" 96;letter-spacing:-.045em;color:var(--red);white-space:nowrap;cursor:default;-webkit-tap-highlight-color:transparent;text-shadow:0 1px 0 rgba(0,0,0,.25),0 24px 60px rgba(0,0,0,.55)}
+.name:focus-visible{outline-offset:10px}
+.nmw{position:absolute;left:0;bottom:0;display:inline-block;transform-origin:0 100%;transition:transform .9s var(--ease-io)}
+.xp{display:inline-block;max-width:0;overflow:hidden;vertical-align:bottom;padding-bottom:.18em;margin-bottom:-.18em;transition:max-width .9s var(--ease-io)}
+.xi{display:inline-block}
+.xs{display:inline-block;width:0;transition:width .9s var(--ease-io)}
+.name.open .nmw{transform:scale(var(--k,1))}
+.name.open .xp{max-width:var(--w,0)}
+.name.open .xs{width:.24em}
+.name.measure .xp{max-width:none!important;transition:none!important}
+.name.measure .xs{width:.24em!important;transition:none!important}
+.name.measure .nmw{transform:none!important;transition:none!important}
+.hb-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem 2rem}
+.intro{max-width:34rem}
+.role{display:block;margin:0 0 .75rem;color:var(--ink-3);font:500 .75rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.desc{margin:0;color:var(--ink);font:400 clamp(1.0625rem,1.6vw,1.3125rem)/1.45 var(--sans);letter-spacing:-.015em}
+.now{margin:.75rem 0 0;font-size:.9375rem;line-height:1.5}
+.now b{font-weight:500;color:var(--ink)}
+.explore{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 1.35rem 1rem 1.5rem;border:0;border-radius:14px;background:var(--red);color:#fff;font:600 .9375rem/1 var(--sans);letter-spacing:-.005em;text-decoration:none;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 2px 4px rgba(0,0,0,.3),0 18px 36px -14px rgba(232,65,46,.55);transition:transform .16s var(--ease-out),background-color .2s ease,box-shadow .3s ease}
+.explore svg{width:1.05rem;height:1.05rem;transition:transform .3s var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.explore:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 4px 8px rgba(0,0,0,.3),0 24px 44px -14px rgba(232,65,46,.65)}.explore:hover svg{transform:translateY(3px)}}
+.explore:active{transform:scale(.97);background:var(--red-press)}
+/* hero entrance */
+.js .in-1,.js .in-2,.js .in-3{opacity:0;transform:translateY(14px);animation:rise .9s var(--ease-out) forwards}
+.js .in-2{animation-delay:.12s}.js .in-3{animation-delay:.3s}
+.js #orb,.js #wf{opacity:0;animation:fade 1.6s ease .1s forwards}.js #wf{animation-delay:.5s}
+@keyframes rise{to{opacity:1;transform:none}}@keyframes fade{to{opacity:1}}
+
+/* ============ Sections ============ */
+.sec{position:relative;padding:clamp(4.5rem,11vw,9rem) 0}
+.sec-head{display:grid;gap:1rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
+@media(min-width:900px){.sec-head{grid-template-columns:1fr auto;align-items:end}}
+.h2{font-size:clamp(2.5rem,6.4vw,5.25rem);letter-spacing:-.04em;line-height:.95}
+.h2 em{font-style:normal;color:var(--ink-3)}
+.sec-head p{margin:0;max-width:30rem}
+
+/* Work */
+/* the work section is a solid layer that slides up over the pinned hero, with a sharp lit edge */
+#work{z-index:2;margin-top:-66.667vh;margin-top:-66.667svh;background:var(--bg-2);overflow:hidden;box-shadow:0 -1px 0 var(--line-2),0 -40px 90px -10px rgba(0,0,0,.75)}
+#about,#contact{position:relative;z-index:2}
+#work>.wrap{position:relative;z-index:1}
+/* per-project backdrops behind the carousel: they crossfade as the front project changes */
+.wbg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.wbg::after{content:"";position:absolute;inset:0;background:linear-gradient(var(--bg-2),transparent 22%,transparent 72%,var(--bg-2))}
+.wb{position:absolute;inset:0;opacity:0;transform:scale(1.05);transition:opacity .8s ease,transform 1.4s var(--ease-out)}
+.wb.on{opacity:1;transform:none}
+.wb svg{position:absolute;inset:0;width:100%;height:100%}
+.wb-word{position:absolute;left:50%;bottom:-.14em;translate:-50% 0;font:800 clamp(6rem,21vw,23rem)/1 var(--display);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(237,231,225,.075);white-space:nowrap}
+.sh-r{display:grid;gap:1.25rem;justify-items:start}
+@media(min-width:900px){.sh-r{justify-items:end;text-align:right}}
+.vall{padding:.75rem 1.15rem;border:1px solid var(--line-2);border-radius:12px;background:rgba(19,23,30,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--ink);font:500 .875rem/1 var(--sans);cursor:pointer;transition:background-color .2s ease,transform .16s var(--ease-out)}
+.vall:hover{background:var(--s3)}.vall:active{transform:scale(.97)}
+/* 3D carousel: cards on a tilted ring; the front card opens, side cards turn the ring */
+.ringui{position:relative}
+.stage{position:relative;height:540px;perspective:1600px;perspective-origin:50% 32%;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.ringui.drag .stage{cursor:grabbing}
+.stage::after{content:"";position:absolute;left:18%;right:18%;bottom:6px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);pointer-events:none;z-index:-1}
+.ring{list-style:none;margin:0;padding:0;position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(-6deg);pointer-events:none}
+.slot{pointer-events:auto;position:absolute;left:50%;top:47%;width:min(410px,80vw);transform-style:preserve-3d;will-change:transform}
+.slot .card{height:450px;min-height:0;background:linear-gradient(180deg,rgba(25,30,38,.94),rgba(19,23,30,.96))}
+.slot::after{content:"";position:absolute;inset:0;z-index:3;border-radius:22px;background:var(--bg-2);opacity:var(--dim,0);pointer-events:none}
+.slot.front .card{border-color:var(--line-2);box-shadow:var(--e3)}
+.slot:not(.front) .card{transform:none!important;box-shadow:var(--e1)!important}
+.ctl{display:flex;align-items:center;justify-content:center;gap:1rem 1.25rem;margin-top:.75rem}
+.rbtn{width:3rem;height:3rem;display:grid;place-items:center;border:1px solid var(--line-2);border-radius:50%;background:var(--s2);color:var(--ink);cursor:pointer;box-shadow:var(--e1);transition:transform .16s var(--ease-out),background-color .2s ease}
+.rbtn:hover{background:var(--s3)}.rbtn:active{transform:scale(.94)}
+.rbtn svg{width:1.1rem;height:1.1rem}
+.dots{display:flex;gap:.5rem}
+.dot{width:.6rem;height:.6rem;padding:0;border:0;border-radius:999px;background:var(--line-2);cursor:pointer;transition:width .35s var(--ease-out),background-color .35s ease}
+.dot[aria-current="true"]{width:1.75rem;background:var(--ink)}
+/* "View all": the ring unfolds into a flat grid */
+.ringui.all .stage{height:auto;perspective:none;cursor:auto;touch-action:auto;user-select:auto;-webkit-user-select:auto}
+.ringui.all .stage::after,.ringui.all .ctl{display:none}
+.ringui.all .ring{position:static;transform:none;display:grid;gap:clamp(.75rem,1.5vw,1.25rem);grid-template-columns:repeat(12,1fr);pointer-events:auto}
+.ringui.all .slot{position:static;width:auto;grid-column:span 12;transform:none!important;animation:unfold .6s var(--ease-out) backwards;animation-delay:calc(var(--k)*60ms)}
+@media(min-width:900px){.ringui.all .s0,.ringui.all .s3{grid-column:span 7}.ringui.all .s1,.ringui.all .s2{grid-column:span 5}}
+.ringui.all .slot::after{display:none}
+.ringui.all .slot .card{height:100%;min-height:21rem}
+@keyframes unfold{from{opacity:0;transform:translateY(18px) scale(.97)}}
+@media(max-width:639px){.stage{height:520px}.slot .card{height:470px}}
+.cvc.solo{margin-top:clamp(2.5rem,5vw,4rem)}
+.card{--mx:50%;--my:0%;position:relative;display:flex;flex-direction:column;gap:1rem;min-height:21rem;padding:clamp(1.4rem,2.6vw,2.25rem);border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,var(--s2),var(--s1));box-shadow:var(--e1);overflow:hidden;transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out),border-color .3s ease}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(520px circle at var(--mx) var(--my),rgba(243,232,220,.075),transparent 45%);opacity:0;transition:opacity .4s ease}
+@media(hover:hover) and (pointer:fine){.card:hover{transform:translateY(-4px);box-shadow:var(--e2);border-color:var(--line-2)}.card:hover::before{opacity:1}.card:hover .go svg{transform:translateX(4px)}}
+.card:has(.stretch:focus-visible){border-color:var(--ink)}
+.card-top{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .9rem}
+.idx{padding:.3rem .5rem;border:1px solid var(--line-2);border-radius:7px;color:var(--ink)}
+.card-t{font-size:clamp(1.6rem,2.7vw,2.25rem);letter-spacing:-.03em;line-height:1.05;max-width:22ch}
+.stretch{all:unset;cursor:pointer}
+.stretch::after{content:"";position:absolute;inset:0;z-index:1;border-radius:22px}
+.stretch:focus-visible{outline:none}
+.card-s{margin:0;max-width:46ch}
+.steps{list-style:none;margin:auto 0 0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:.4rem}
+.steps li{display:flex;align-items:center;gap:.4rem;font:400 .75rem/1.3 var(--mono);color:var(--ink-2)}
+.steps li span{padding:.35rem .55rem;border-radius:7px;background:rgba(237,231,225,.04);border:1px solid var(--line)}
+.steps li+li::before{content:"→";color:var(--ink-3)}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.go{display:inline-flex;align-items:center;gap:.45rem;color:var(--ink);font:500 .875rem/1 var(--sans);white-space:nowrap}
+.go svg{width:1rem;height:1rem;transition:transform .3s var(--ease-out)}
+.cvc{min-height:0;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;background:linear-gradient(110deg,var(--s3),var(--s1) 70%)}
+.cvc h3{font-size:clamp(1.6rem,3vw,2.5rem)}
+.cvc p{margin:.5rem 0 0}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem;position:relative;z-index:2}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.2rem;border:1px solid var(--line-2);border-radius:12px;background:var(--s2);color:var(--ink);font:500 .9375rem/1 var(--sans);cursor:pointer;text-decoration:none;box-shadow:var(--e1);transition:transform .16s var(--ease-out),background-color .2s ease,border-color .2s ease}
+.btn:hover{background:var(--s3);border-color:rgba(237,231,225,.24)}
+.btn:active{transform:scale(.97)}
+.btn.light{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.light:hover{background:#fff}
+.btn svg{width:1rem;height:1rem}
+
+/* About */
+#about{background:var(--bg-2);border-top:1px solid var(--line)}
+.about{display:grid;gap:clamp(2.5rem,6vw,5rem)}
+@media(min-width:960px){.about{grid-template-columns:7fr 5fr}}
+.lead{font:400 clamp(1.25rem,2vw,1.5rem)/1.45 var(--sans);letter-spacing:-.015em;color:var(--ink)}
+.creed{position:relative;margin:2.5rem 0 0;padding:1.75rem 1.75rem 1.75rem 2rem;border:1px solid var(--line);border-radius:20px;background:var(--s1);box-shadow:var(--e1)}
+.creed::before{content:"";position:absolute;left:0;top:1.75rem;bottom:1.75rem;width:3px;border-radius:2px;background:var(--red)}
+/* a little of the hero's red in About: the heading accent, the label rule, the creed bar and fact markers */
+#about .h2 em{color:var(--red)}
+#about .label::before{background:var(--red);width:2rem}
+.fact dt{display:flex;align-items:center;gap:.5rem}
+.fact dt::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
+.creed .mono{display:block;margin-bottom:.75rem}
+.creed p{margin:0;color:var(--ink);font:400 1.125rem/1.6 var(--sans);letter-spacing:-.01em}
+.facts{display:grid;gap:.75rem;margin:0;align-content:start}
+@media(min-width:960px){.facts{position:sticky;top:6.5rem}}
+.fact{padding:1.35rem 1.5rem;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--s2),var(--s1));box-shadow:var(--e1)}
+.fact dt{margin-bottom:.5rem}
+.fact dd{margin:0;color:var(--ink);line-height:1.5}
+.fact dd small{display:block;margin-top:.35rem;color:var(--ink-3);font-size:.875rem}
+.skills{display:grid;gap:.75rem;margin-top:clamp(3rem,6vw,5rem);grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}
+.sg{padding:1.35rem 1.5rem 1.5rem;border:1px solid var(--line);border-radius:18px;background:var(--s1)}
+.sg h3{font:500 1rem/1.4 var(--sans);letter-spacing:-.01em;margin:0 0 1rem;color:var(--ink)}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.chips li{padding:.35rem .7rem;border:1px solid var(--line);border-radius:8px;background:rgba(237,231,225,.03);font-size:.875rem;line-height:1.4;color:var(--ink-2)}
+
+/* Contact */
+#contact{border-top:1px solid var(--line);overflow:hidden;background:radial-gradient(70% 90% at 50% 100%,rgba(226,170,138,.06),transparent 70%),var(--bg)}
+.talk{font-size:clamp(3.5rem,13vw,11rem);letter-spacing:-.055em;line-height:.85;font-weight:600}
+.mail{display:inline-flex;align-items:center;gap:.6rem;margin-top:clamp(2rem,4vw,3rem);font:400 clamp(1.25rem,3.2vw,2.25rem)/1.2 var(--sans);letter-spacing:-.02em;text-decoration:none;color:var(--ink);overflow-wrap:anywhere}
+.mail svg{flex:none;width:.8em;height:.8em;transition:transform .3s var(--ease-out)}
+.mail:hover svg{transform:translate(3px,-3px)}
+.mail-u{background:linear-gradient(var(--ink),var(--ink)) 0 100%/0 1px no-repeat;transition:background-size .4s var(--ease-out)}
+.mail:hover .mail-u{background-size:100% 1px}
+.links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:clamp(4rem,9vw,7rem);padding-top:1.5rem;border-top:1px solid var(--line)}
+.foot a{color:var(--ink-3);text-decoration:none}.foot a:hover{color:var(--ink)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ============ Dialogs ============ */
+dialog{width:min(780px,calc(100vw - 2rem));max-height:calc(100svh - 2rem);padding:0;border:1px solid var(--line-2);border-radius:24px;background:var(--s1);color:var(--ink-2);box-shadow:var(--e3);overscroll-behavior:contain}
+dialog[open]{animation:pop .26s var(--ease-out)}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}}
+dialog::backdrop{background:rgba(5,6,9,.7);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.dlg{position:relative;padding:clamp(1.5rem,4.5vw,3rem)}
+.x{position:sticky;float:right;top:0;margin:-.5rem -.5rem 0 0;width:2.5rem;height:2.5rem;display:grid;place-items:center;border:1px solid var(--line);border-radius:11px;background:var(--s2);color:var(--ink);cursor:pointer;z-index:2;transition:background-color .2s ease,transform .16s var(--ease-out)}
+.x:hover{background:var(--s3)}.x:active{transform:scale(.95)}
+.x svg{width:1rem;height:1rem}
+.dlg h2{font-size:clamp(1.9rem,4.5vw,2.75rem);letter-spacing:-.035em;margin:.75rem 3rem 2rem 0;max-width:20ch}
+.cs dl{margin:0}
+.cs dt{padding-top:1.1rem;border-top:1px solid var(--line)}
+.cs dd{margin:.4rem 0 0;padding-bottom:1.1rem;color:var(--ink);max-width:62ch}
+@media(min-width:640px){.cs dl{display:grid;grid-template-columns:8rem 1fr;column-gap:1.5rem}.cs dt,.cs dd{margin:0;padding:1.1rem 0;border-top:1px solid var(--line)}}
+.flow{margin:2rem 0 0;padding:1.5rem;border:1px solid var(--line);border-radius:18px;background:var(--bg-2)}
+.flow ol{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.5rem;counter-reset:f}
+.flow li{counter-increment:f;position:relative;display:flex;align-items:center;gap:.9rem;padding:.75rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--s2);color:var(--ink);font-size:.9375rem}
+.flow li::before{content:counter(f,decimal-leading-zero);font:500 .6875rem/1 var(--mono);color:var(--ink-3)}
+.flow li+li::after{content:"";position:absolute;left:1.55rem;top:-.55rem;height:.55rem;width:1px;background:var(--line-2)}
+.cv h2{margin-bottom:.5rem}
+.cv h3{font:500 .75rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:2rem 0 .6rem;padding-bottom:.4rem;border-bottom:1px solid var(--line)}
+.cv h4{font:500 1rem/1.5 var(--sans);letter-spacing:-.01em;margin:1.1rem 0 0;color:var(--ink)}
+.cv p,.cv ul{margin:.35rem 0}.cv ul{padding-left:1.15rem}.cv li{margin:.25rem 0}
+.cv .sub{font-size:.9375rem}
+.cvbar{display:flex;align-items:center;gap:.75rem;margin:0 3rem 1.75rem 0}
+
+@media(prefers-reduced-motion:reduce){
+  .js .in-1,.js .in-2,.js .in-3,.js #orb,.js #wf{animation:fade .4s ease forwards;transform:none}
+  .nmw,.xp,.xs{transition:none}
+  .js .rv{transform:none;transition:opacity .4s ease}
+  .card,.card:hover{transform:none!important}
+  dialog[open]{animation:fade .2s ease}
+}
+@media print{
+  @page{margin:14mm}
+  html,body{background:#fff!important;overflow:visible!important}
+  body::after{display:none}
+  body>*:not(#cv){display:none!important}
+  #cv:not([open]){display:none!important}
+  #cv{position:static!important;display:block!important;width:auto;max-width:none;max-height:none;overflow:visible;box-shadow:none;border:0;background:#fff;color:#1a1f24;animation:none}
+  #cv .dlg{padding:0}#cv .cvbar,#cv .x{display:none!important}
+  #cv h2,#cv h3,#cv h4{color:#1a1f24!important;border-color:#bbb!important}
+  #cv{font-size:10.5pt;line-height:1.5}#cv h2{font-size:22pt;margin:0}
+  #cv a{color:#1a1f24;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header class="bar" id="bar">
+  <a class="brand" href="#top" aria-label="Mahim Sathya Prakash, back to top"><span class="mark" aria-hidden="true">MSP</span><span class="bn">Mahim Sathya Prakash</span></a>
+  <nav aria-label="Primary">
+    <a class="nl" href="#work">Work</a><a class="nl" href="#about">About</a><a class="nl" href="#contact">Contact</a>
+    <button class="nb" type="button" data-open-cv>CV</button>
+  </nav>
+</header>
+
+<div class="hero-pin">
+<section class="hero" id="top" aria-label="Introduction">
+  <canvas id="wf" aria-hidden="true"></canvas>
+  <canvas id="orb" aria-hidden="true"></canvas>
+  <div class="dim" id="dim" aria-hidden="true"></div>
+  <div class="hero-in" id="hin">
+    <div class="hero-top mono in-1">
+      <span>Workflow automation · Enterprise integrations</span>
+      <a href="https://www.google.com/maps/place/Bengaluru,+Karnataka,+India" target="_blank" rel="noopener">Bengaluru, India<span class="sr"> (opens Google Maps in a new tab)</span></a>
+    </div>
+    <div class="hero-mid in-2">
+      <div class="side" id="sl"><span class="mono">(01) I work with</span><p>Adobe Workfront, Workfront Fusion, AEM Assets and Braze.</p></div>
+      <p class="hint mono" id="hint" aria-hidden="true"><i></i><span class="hf">Move through the orb · click to pulse</span><span class="ht">Tap the orb to pulse</span></p>
+      <div class="side r" id="sr"><span class="mono">(02) Certified</span><p>Adobe Certified Professional in Workfront Core.</p></div>
+    </div>
+    <div class="hero-bot" id="hb">
+      <h1 class="name in-2" id="name" tabindex="0">Mahim Sathya Prakash</h1>
+      <div class="hb-row in-3">
+        <div class="intro">
+          <span class="role">Adobe Workfront — Senior Developer</span>
+          <p class="desc">I build automations in Adobe Workfront that move marketing work from request to approval to delivery, without the manual chasing.</p>
+          <p class="now"><b>Right now:</b> Senior Developer at Capgemini, working with Subway’s global marketing team.</p>
+        </div>
+        <a class="explore" href="#work">Explore more
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v13M4 11l6 6 6-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<main>
+<section class="sec" id="work" aria-labelledby="wh">
+  <div class="wbg" id="wbg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><p class="mono label">Selected work</p><h2 class="h2" id="wh">A look into<br><em>my work</em></h2></div>
+      <div class="sh-r"><p>Four projects across workflow automation, customer engagement and hardware. Drag, swipe or use the arrows to turn the carousel, then open the front card for the full case study.</p>
+        <button class="vall" id="vall" type="button" aria-pressed="false">View all</button></div>
+    </div>
+    <div class="ringui rv" id="ringui" role="region" aria-roledescription="carousel" aria-label="Projects">
+      <div class="stage" id="stage"><ul class="ring" id="grid"></ul></div>
+      <div class="ctl">
+        <button class="rbtn" id="prev" type="button" aria-label="Previous project"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+        <div class="dots" id="dots"></div>
+        <button class="rbtn" id="next" type="button" aria-label="Next project"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4 6 6-6 6"/></svg></button>
+      </div>
+      <p id="ringlive" class="sr" aria-live="polite"></p>
+    </div>
+    <div id="cvband"></div>
+  </div>
+</section>
+
+<section class="sec" id="about" aria-labelledby="ah">
+  <div class="wrap">
+    <div class="about">
+      <div class="rv">
+        <p class="mono label">About</p>
+        <h2 class="h2" id="ah">Reliable workflows, <em>built carefully</em></h2>
+        <div style="margin-top:2.5rem">
+          <p class="lead">I’m a software developer at Capgemini with hands-on experience in Adobe Workfront and Workfront Fusion, building workflow automations and connecting enterprise marketing platforms.</p>
+          <p>My focus is practical: solving integration challenges and delivering reliable workflows. I’m an Adobe Certified Professional in Workfront Core and a Claude Certified Developer – Foundations.</p>
+          <p>In my own time I stay curious and exploratory across the wider martech stack, trying out platforms such as n8n, Claude and other automation and AI tools to see how they can make marketing operations faster and smarter.</p>
+        </div>
+        <blockquote class="creed"><span class="mono">A little about me</span><p>I’m driven by a continuous improvement mindset and hold myself to a high standard for every goal. My work ethic is simple: work as hard as I can, and let results come from taking good steps. I’ve applied these ideas throughout my life, and they will always be a core part of who I am.</p></blockquote>
+      </div>
+      <dl class="facts rv" style="--d:.1s">
+        <div class="fact"><dt class="mono">Role</dt><dd>Senior Developer, Capgemini<small>June 2026 – present. Promoted from Junior Developer (Nov 2024 – May 2026).</small></dd></div>
+        <div class="fact"><dt class="mono">Certifications</dt><dd>Adobe Certified Professional in Workfront Core<small>Claude Certified Developer – Foundations (Anthropic)</small></dd></div>
+        <div class="fact"><dt class="mono">Education</dt><dd>B.Tech in Electronics and Communication Engineering<small>PES University, 2019 – 2023</small></dd></div>
+      </dl>
+    </div>
+    <div class="rv"><p class="mono label" style="margin-top:clamp(3rem,6vw,5rem)">Skills</p></div>
+    <div class="skills" id="skills" style="margin-top:0"></div>
+  </div>
+</section>
+</main>
+
+<footer class="sec" id="contact" aria-labelledby="ch">
+  <div class="wrap">
+    <p class="mono label rv">Contact</p>
+    <h2 class="talk rv" id="ch">Let’s talk.</h2>
+    <a class="mail rv" href="mailto:mahimsprakash@gmail.com"><span class="mail-u">mahimsprakash@gmail.com</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></a>
+    <div class="links rv">
+      <a class="btn" href="https://www.linkedin.com/in/mahimsp" target="_blank" rel="noopener">LinkedIn<span class="sr"> (opens in a new tab)</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></a>
+      <button class="btn" type="button" data-open-cv>View CV</button>
+    </div>
+    <div class="foot mono">
+      <span>© Mahim Sathya Prakash</span>
+      <a href="https://www.google.com/maps/place/Bengaluru,+Karnataka,+India" target="_blank" rel="noopener">Bengaluru, India<span class="sr"> (opens Google Maps in a new tab)</span></a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<dialog id="pd" class="cs" aria-labelledby="pdt"></dialog>
+
+<dialog id="cv" class="cv" aria-labelledby="cvt"><div class="dlg">
+  <button class="x" aria-label="Close CV" data-close><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
+  <div class="cvbar"><button class="btn light" id="pdf" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>Download PDF</button></div>
+  <h2 id="cvt">Mahim Sathya Prakash</h2>
+  <p class="sub"><strong style="color:var(--ink);font-weight:500">Adobe Workfront – Senior Developer</strong><br>Bengaluru, India · <a href="mailto:mahimsprakash@gmail.com">mahimsprakash@gmail.com</a> · <a href="https://www.linkedin.com/in/mahimsp" rel="noopener">linkedin.com/in/mahimsp</a></p>
+  <h3>Summary</h3>
+  <p>Software developer at Capgemini with hands-on experience in Adobe Workfront and Workfront Fusion, building workflow automations and connecting enterprise marketing platforms. Practical focus on solving integration challenges and delivering reliable workflows.</p>
+  <h3>Experience</h3>
+  <h4>Capgemini, Bengaluru</h4>
+  <p class="sub">Senior Developer, June 2026 – present<br>Junior Developer, Nov 2024 – May 2026</p>
+  <h4>Subway, Global Marketing and DAM team: Workfront Developer (May 2025 – present)</h4>
+  <ul>
+    <li>Demonstrated an end-to-end Workfront-to-AEM Assets proof of concept, connecting a complex approval workflow with AEM Assets so finalized creative assets could be handed off into the DAM platform.</li>
+    <li>Took individual-contributor ownership of the existing automation, maintaining and supporting workflows used by the global marketing and DAM team.</li>
+    <li>Built and refined Workfront Fusion automation flows across enterprise systems, with integrations involving ADO, AJO, Dynatrace and MM2.</li>
+    <li>Configured Workfront approval workflows, custom forms, layout templates and reporting for day-to-day marketing operations.</li>
+  </ul>
+  <h4>Astro, Malaysian digital entertainment platform: Developer (Dec 2024 – Mar 2025)</h4>
+  <ul>
+    <li>Developed a working Braze proof of concept with customer journeys using audience splits and A/B testing across mobile push, in-app messaging, web and email, demonstrating a clear business use case.</li>
+    <li>Explored integrations with Amazon S3 and TikTok as part of a cross-channel campaign demonstration.</li>
+  </ul>
+  <h3>Skills</h3><ul id="cvskills"></ul>
+  <h3>Certifications</h3><p>Adobe Certified Professional in Workfront Core<br>Claude Certified Developer – Foundations (Anthropic)</p>
+  <h3>Education</h3><p>B.Tech in Electronics and Communication Engineering, PES University (2019 – 2023)<br>Capstone: Interactive educational device for the visually impaired (refreshable braille display)</p>
+</div></dialog>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* ================= Content ================= */
+const SKILLS={'Adobe and marketing platforms':['Adobe Workfront','Workfront Fusion','AEM Assets','Braze','Salesforce Marketing Cloud'],
+'Automation and integrations':['Workflow automation','Approval workflows','System integrations','Digital asset management'],
+'Martech exploration':['n8n','Claude','AI agents and automation','Audience segmentation','A/B testing'],
+'Programming and data':['JavaScript','Java','Python','SQL','Pandas','NumPy','Matplotlib'],
+'Frameworks and libraries':['Spring','Angular','Scikit-learn','TensorFlow','Keras']};
+const P=[
+{k:'Subway · Workfront Developer · May 2026 – present',t:'Workfront to AEM Assets',s:'Handing off finalized creative assets from an approval workflow into AEM Assets.',
+ ctx:'The global marketing and DAM team ran a complex approval workflow in Workfront, and finalized creative assets needed to reach the digital asset management platform.',
+ ch:'Connect the approval workflow with AEM Assets so finalized assets could be handed off into the DAM platform.',
+ ap:'I connected the Workfront approval workflow with AEM Assets end to end. Once the initial solution was built, I took individual-contributor ownership of the automation.',
+ out:'An end-to-end handoff from approval to AEM Assets. I now maintain and support the workflows the global marketing and DAM team uses.',
+ tools:'Adobe Workfront, AEM Assets',
+ flow:['Workfront approval workflow','Finalized creative assets','Handoff to DAM','AEM Assets']},
+{k:'Subway · Workfront Developer · May 2025 – June 2026',t:'Workfront Fusion automation across enterprise systems',s:'Fusion flows, approval workflows, forms and reporting for day-to-day marketing operations.',
+ ctx:'Marketing operations ran on Workfront and needed it to work with other enterprise systems.',
+ ch:'Keep work moving reliably between Workfront and systems such as ADO, AJO, Dynatrace and MM2.',
+ ap:'I built and refined Workfront Fusion automation flows across these systems. In Workfront, I configured approval workflows, custom forms, layout templates and reporting.',
+ out:'Fusion automation flows with integrations involving ADO, AJO, Dynatrace and MM2, plus a Workfront setup that supports day-to-day marketing operations.',
+ tools:'Adobe Workfront, Workfront Fusion, ADO, AJO, Dynatrace, MM2',
+ flow:['Workfront approvals and forms','Workfront Fusion scenarios','ADO, AJO, Dynatrace, MM2']},
+{k:'Astro · Developer · Dec 2024 – Mar 2025',t:'Braze cross-channel proof of concept',s:'Customer journeys with audience splits and A/B testing across four channels.',
+ ctx:'Astro, a Malaysian digital entertainment platform, wanted to see customer journeys working across several channels.',
+ ch:'Demonstrate a clear use case for customer journeys across mobile push, in-app messaging, web and email, with different audiences receiving different paths.',
+ ap:'I developed a working Braze proof of concept with customer journeys that used audience splits to route segments down different paths, and A/B testing to compare message variants. I also explored integrations with Amazon S3 and TikTok as part of a cross-channel campaign demonstration.',
+ out:'A working proof of concept showing segmented, A/B-tested customer journeys across mobile push, in-app messaging, web and email, with a clear use case for the business.',
+ tools:'Braze, Amazon S3, TikTok',
+ flow:['Audience split','A/B test variants','Push, in-app, web, email','Amazon S3 and TikTok']},
+{k:'PES University · Capstone, Phase 1 · Jan – May 2022',t:'Capstone: Interactive educational device for the visually impaired',s:'A refreshable braille display concept designed around micro servos.',
+ ctx:'My B.Tech capstone in Electronics and Communication Engineering at PES University, done as a team of four. Visual impairment is a leading cause of disability, and existing reading aids are often hard to access, not portable, or power-hungry.',
+ ch:'Propose a refreshable braille device that is more efficient and easier to use than options on the market. Each of the six braille dots has to move up and down independently to form different letters.',
+ ap:'We surveyed published braille displays and compared actuator options, including solenoids, electromagnetic and rotary designs, and micro servos. We chose six SG90 micro servos driven by a servo driver, using the tangential direction of rotation to move each pin linearly. Text in the selected language goes to the microcontroller, which converts it and drives the display.',
+ out:'Phase 1 delivered a finalized methodology, a block diagram and the hardware list for the device. Micro servos were chosen for their low energy use and because they are simple to build and maintain.',
+ tools:'Arduino Uno R3, SG90 micro servos (6), servo driver',
+ flow:['Text input in selected language','Arduino Uno R3 converts text','Servo driver','Six SG90 micro servos','Refreshable braille cell']}];
+
+const ARROW='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>';
+const DL='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>';
+
+/* small deterministic RNG, so generated art is identical on every load and every screen */
+const rng=s=>()=>((s=(Math.imul(s,1664525)+1013904223)>>>0)/4294967296);
+const hash=(i,j)=>{let h=Math.imul(i,374761393)+Math.imul(j,668265263)|0;h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967296};
+
+/* ================= Render ================= */
+const grid=$('#grid');
+grid.innerHTML=P.map((p,i)=>{const [org,role,date]=p.k.split(' · ');
+ return `<li class="slot s${i}" data-n="${i}" style="--k:${i}"><article class="card c${i}">
+  <div class="card-top mono"><span class="idx">0${i+1}</span><span>${org} · ${role}</span><span>${date}</span></div>
+  <h3 class="card-t"><button class="stretch" type="button" data-i="${i}" aria-haspopup="dialog">${p.t}</button></h3>
+  <p class="card-s">${p.s}</p>
+  <ol class="steps" aria-label="Simplified flow">${p.flow.map(f=>`<li><span>${f}</span></li>`).join('')}</ol>
+  <div class="card-foot"><span class="mono">${(t=>t.slice(0,3).join(' · ')+(t.length>3?` · +${t.length-3} more`:''))(p.tools.split(', '))}</span><span class="go" aria-hidden="true">Case study ${ARROW}</span></div>
+ </article></li>`}).join('');
+$('#cvband').outerHTML=`<article class="card cvc solo rv"><div><p class="mono" style="margin:0 0 .75rem">Curriculum vitae</p><h3>Download / View CV</h3><p>A printable summary of my experience, skills, certifications and education.</p></div>
+ <div class="btns"><button class="btn light" type="button" data-open-cv>View CV ${ARROW}</button><button class="btn" type="button" data-dl>${DL}Download PDF</button></div></article>`;
+
+/* ---------- Project backdrops (SVG, viewBox-scaled with slice so they fill any aspect ratio) ---------- */
+const BG=[
+ {w:'ASSETS',c:'226,170,138',art:()=>{const r=rng(3);let s='';for(let y=0;y<9;y++)for(let x=0;x<15;x++){const v=r();if(v<.5)continue;
+   s+=`<rect x="${40+x*106}" y="${30+y*110}" width="88" height="${v>.86?92:66}" rx="10" fill="rgba(226,170,138,${((v-.5)*.13).toFixed(3)})" stroke="rgba(237,231,225,.055)"/>`}return s}},
+ {w:'FUSION',c:'127,163,200',art:()=>{const r=rng(5);let s='';for(let i=0;i<16;i++){const a=80+r()*840,b=80+r()*840,m=500+r()*600;
+   s+=`<path d="M-40 ${a.toFixed(0)}C${m.toFixed(0)} ${a.toFixed(0)} ${(1600-m).toFixed(0)} ${b.toFixed(0)} 1640 ${b.toFixed(0)}" fill="none" stroke="rgba(127,163,200,${(.05+r()*.1).toFixed(3)})" stroke-width="1.5"${i%3?'':' stroke-dasharray="4 10"'}/>`;
+   if(i%2)s+=`<circle cx="${(400+r()*800).toFixed(0)}" cy="${((a+b)/2).toFixed(0)}" r="5" fill="rgba(127,163,200,.35)"/>`}return s}},
+ {w:'JOURNEYS',c:'176,150,214',art:()=>{let s='';for(let i=1;i<12;i++)s+=`<circle cx="1120" cy="470" r="${i*82}" fill="none" stroke="rgba(176,150,214,${(.16-i*.011).toFixed(3)})" stroke-width="1.2"${i%2?' stroke-dasharray="2 9"':''}/>`;
+   [[-1,-.35],[-1,.4],[.2,-1],[-.55,1]].forEach(([dx,dy],i)=>{s+=`<line x1="1120" y1="470" x2="${(1120+dx*1300).toFixed(0)}" y2="${(470+dy*1300).toFixed(0)}" stroke="rgba(176,150,214,.12)"/><circle cx="${(1120+dx*(330+i*90)).toFixed(0)}" cy="${(470+dy*(330+i*90)).toFixed(0)}" r="7" fill="rgba(176,150,214,.4)"/>`});return s}},
+ {w:'BRAILLE',c:'157,190,154',art:()=>{const r=rng(9);let s='';for(let y=0;y<9;y++)for(let x=0;x<19;x++){const ox=50+x*84,oy=40+y*112;
+   for(let d=0;d<6;d++){const cx=ox+(d%2)*22,cy=oy+((d/2)|0)*22,on=r()<.42;s+=on?`<circle cx="${cx}" cy="${cy}" r="5.5" fill="rgba(157,190,154,.22)"/>`:`<circle cx="${cx}" cy="${cy}" r="5" fill="none" stroke="rgba(237,231,225,.05)"/>`}}return s}}];
+$('#wbg').innerHTML=BG.map((b,i)=>`<div class="wb${i?'':' on'}" style="background:radial-gradient(55% 60% at 72% 28%,rgba(${b.c},.13),transparent 70%),radial-gradient(45% 50% at 15% 85%,rgba(${b.c},.06),transparent 70%)"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">${b.art()}</svg><span class="wb-word">${b.w}</span></div>`).join('');
+const wbs=$$('.wb');
+
+/* ---------- 3D carousel ---------- */
+const ui=$('#ringui'),stage=$('#stage'),slots=$$('.slot',grid),NS=slots.length,STEP=Math.PI*2/NS,vall=$('#vall'),dots=$('#dots'),live=$('#ringlive');
+const md=v=>((Math.round(v)%NS)+NS)%NS;
+let fpos=0,ftgt=0,allMode=false,ringRaf=0,lastFront=-1,rlt=0;
+dots.innerHTML=slots.map((s,i)=>`<button type="button" class="dot" data-go="${i}" aria-label="Show ${s.querySelector('h3').textContent}"></button>`).join('');
+const dotBtns=[...dots.children];
+function lay(pos){
+ const sw=stage.clientWidth,cw=slots[0].offsetWidth,RR=Math.max(cw*.6,Math.min(sw*.42,520)),front=md(pos);
+ slots.forEach((s,i)=>{let d=(i-pos)%NS;if(d>NS/2)d-=NS;if(d<-NS/2)d+=NS;
+  const a=d*STEP,x=Math.sin(a)*RR,z=(Math.cos(a)-1)*RR,ad=Math.abs(d),rot=Math.sin(a)*-34;
+  s.style.transform=`translate(-50%,-50%) translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${rot.toFixed(2)}deg)`;
+  s.style.zIndex=String(100-Math.round(ad*20));
+  s.style.setProperty('--dim',Math.min(.8,ad*.38).toFixed(3));
+  const on=i===front;s.classList.toggle('front',on);
+  s.querySelector('.stretch').tabIndex=on?0:-1;s.setAttribute('aria-hidden',on?'false':'true')});
+ if(front!==lastFront){lastFront=front;dotBtns.forEach((b,i)=>b.setAttribute('aria-current',i===front?'true':'false'));
+  wbs.forEach((b,i)=>b.classList.toggle('on',i===front));
+  live.textContent=`${front+1} of ${NS}: ${slots[front].querySelector('h3').textContent}`}}
+/* time-based ease toward the target, so it turns at the same speed on 60Hz and 120Hz screens */
+function spin(n){ringRaf=0;const k=rlt?Math.min(3,(n-rlt)/16.667):1;rlt=n;
+ fpos+=(ftgt-fpos)*(rm?1:1-Math.pow(1-.13,k));if(Math.abs(ftgt-fpos)<.001)fpos=ftgt;lay(fpos);
+ if(fpos!==ftgt)ringRaf=requestAnimationFrame(spin);else rlt=0}
+const kickRing=()=>{if(!ringRaf&&!allMode)ringRaf=requestAnimationFrame(spin)};
+function go(t,focus){ftgt=t;kickRing();if(focus)requestAnimationFrame(()=>slots[md(t)].querySelector('.stretch').focus({preventScroll:true}))}
+const toIdx=i=>{let d=(i-md(ftgt))%NS;if(d>NS/2)d-=NS;if(d<-NS/2)d+=NS;return Math.round(ftgt)+d};
+$('#prev').addEventListener('click',()=>go(Math.round(ftgt)-1));
+$('#next').addEventListener('click',()=>go(Math.round(ftgt)+1));
+dots.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(toIdx(+b.dataset.go))});
+ui.addEventListener('keydown',e=>{if(allMode||!stage.contains(e.target))return;
+ if(e.key==='ArrowLeft'){e.preventDefault();go(Math.round(ftgt)-1,true)}else if(e.key==='ArrowRight'){e.preventDefault();go(Math.round(ftgt)+1,true)}});
+/* clicking a side card turns the ring to it; only the front card opens */
+grid.addEventListener('click',e=>{if(allMode)return;const s=e.target.closest('.slot');if(s&&!s.classList.contains('front')){e.stopImmediatePropagation();e.preventDefault();go(toIdx(+s.dataset.n))}},true);
+/* drag / swipe with momentum */
+let drag=null,moved=false;
+stage.addEventListener('pointerdown',e=>{if(allMode||e.button>0||drag)return;drag={x:e.clientX,f:fpos,id:e.pointerId,t:performance.now(),lx:e.clientX,v:0};moved=false});
+stage.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x;
+ if(!moved&&Math.abs(dx)>7){moved=true;ui.classList.add('drag');try{stage.setPointerCapture(e.pointerId)}catch(_){}}
+ if(moved){const now=performance.now();drag.v=(e.clientX-drag.lx)/Math.max(1,now-drag.t);drag.lx=e.clientX;drag.t=now;
+  fpos=ftgt=drag.f-dx/(slots[0].offsetWidth*1.1);cancelAnimationFrame(ringRaf);ringRaf=0;rlt=0;lay(fpos)}});
+const endDrag=e=>{if(!drag||(e&&e.pointerId!==drag.id))return;if(moved){ui.classList.remove('drag');go(Math.round(fpos-drag.v*.9));setTimeout(()=>moved=false,60)}drag=null};
+stage.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',endDrag);
+stage.addEventListener('click',e=>{if(moved){e.stopImmediatePropagation();e.preventDefault();moved=false}},true);
+/* horizontal trackpad swipes turn it too */
+let wacc=0,wlock=0;
+stage.addEventListener('wheel',e=>{if(allMode||Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;e.preventDefault();
+ if(performance.now()<wlock)return;wacc+=e.deltaX;if(Math.abs(wacc)>40){go(Math.round(ftgt)+Math.sign(wacc));wacc=0;wlock=performance.now()+380}},{passive:false});
+/* view all: unfold the ring into a flat grid, and fold it back */
+vall.addEventListener('click',()=>{allMode=!allMode;ui.classList.toggle('all',allMode);vall.setAttribute('aria-pressed',String(allMode));
+ vall.textContent=allMode?'Back to carousel':'View all';
+ if(allMode){cancelAnimationFrame(ringRaf);ringRaf=0;slots.forEach(s=>{s.classList.remove('front');s.style.removeProperty('--dim');s.removeAttribute('aria-hidden');s.querySelector('.stretch').tabIndex=0})}
+ else{fpos=ftgt;lastFront=-1;lay(fpos)}});
+lay(0);addEventListener('resize',()=>{if(!allMode)lay(fpos)});
+if(document.fonts)document.fonts.ready.then(()=>{if(!allMode)lay(fpos)});
+
+$('#skills').innerHTML=Object.entries(SKILLS).map(([g,a],i)=>`<div class="sg rv" style="--d:${i*.05}s"><h3>${g}</h3><ul class="chips">${a.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+$('#cvskills').innerHTML=Object.entries(SKILLS).map(([g,a])=>`<li><strong style="color:var(--ink);font-weight:500">${g}:</strong> ${a.join(', ')}</li>`).join('');
+
+/* card spotlight follows the pointer (set on the card itself, not a parent) */
+if(fine)grid.addEventListener('pointermove',e=>{const c=e.target.closest('.card');if(!c)return;const b=c.getBoundingClientRect();
+ c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px')},{passive:true});
+
+/* ================= Dialogs ================= */
+const pd=$('#pd'),cv=$('#cv');
+const X='<button class="x" aria-label="Close case study" data-close><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>';
+grid.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(!b)return;const p=P[b.dataset.i];
+ const row=(n,v)=>v?`<dt class="mono">${n}</dt><dd>${v}</dd>`:'';
+ pd.innerHTML=`<div class="dlg">${X}<p class="mono" style="margin:0">${p.k}</p><h2 id="pdt">${p.t}</h2><dl>${row('Context',p.ctx)}${row('Challenge',p.ch)}${row('Approach',p.ap)}${row('Outcome',p.out)}${row('Tools',p.tools)}</dl>
+  <figure class="flow" style="margin-inline:0"><figcaption class="mono">Simplified, generic flow</figcaption><ol>${p.flow.map(f=>`<li>${f}</li>`).join('')}</ol></figure></div>`;
+ pd.showModal();pd.scrollTop=0});
+document.addEventListener('click',e=>{if(e.target.closest('[data-open-cv]')){cv.showModal();cv.scrollTop=0}});
+[pd,cv].forEach(d=>d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-close]'))d.close()}));
+
+/* CV PDF: a one-page PDF is embedded below (base64). To use a newer CV, replace CV_PDF with your file's base64. */
+const CV_PDF='JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL1RpbWVzLVJvbWFuIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtQm9sZCAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjMgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9BIDw8Ci9TIC9VUkkgL1R5cGUgL0FjdGlvbiAvVVJJIChtYWlsdG86bWFoaW1zcHJha2FzaEBnbWFpbC5jb20pCj4+IC9Cb3JkZXIgWyAwIDAgMCBdIC9SZWN0IFsgMTM0LjEyNTYgNzMzLjYzNTQgMjU0LjA5MTYgNzQ1LjAzNTQgXSAvU3VidHlwZSAvTGluayAvVHlwZSAvQW5ub3QKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0EgPDwKL1MgL1VSSSAvVHlwZSAvQWN0aW9uIC9VUkkgKGh0dHBzOi8vd3d3LmxpbmtlZGluLmNvbS9pbi9tYWhpbXNwKQo+PiAvQm9yZGVyIFsgMCAwIDAgXSAvUmVjdCBbIDI2Mi4wMTQ2IDczMy42MzU0IDM2Ni4wMTExIDc0NS4wMzU0IF0gL1N1YnR5cGUgL0xpbmsgL1R5cGUgL0Fubm90Cj4+CmVuZG9iago3IDAgb2JqCjw8Ci9Bbm5vdHMgWyA1IDAgUiA2IDAgUiBdIC9Db250ZW50cyAxMSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCAxMCAwIFIgL1Jlc291cmNlcyA8PAovRm9udCAxIDAgUiAvUHJvY1NldCBbIC9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUkgXQo+PiAvUm90YXRlIDAgCiAgL1RyYW5zIDw8Cgo+PiAvVHlwZSAvUGFnZQo+PgplbmRvYmoKOCAwIG9iago8PAovUGFnZU1vZGUgL1VzZU5vbmUgL1BhZ2VzIDEwIDAgUiAvVHlwZSAvQ2F0YWxvZwo+PgplbmRvYmoKOSAwIG9iago8PAovQXV0aG9yIChNYWhpbSBTYXRoeWEgUHJha2FzaCkgL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MTAyMjE3NDMzMCswMCcwMCcpIC9DcmVhdG9yIChcKHVuc3BlY2lmaWVkXCkpIC9LZXl3b3JkcyAoKSAvTW9kRGF0ZSAoRDoyMDI2MTAyMjE3NDMzMCswMCcwMCcpIC9Qcm9kdWNlciAoUmVwb3J0TGFiIFBERiBMaWJyYXJ5IC0gXChvcGVuc291cmNlXCkpIAogIC9TdWJqZWN0IChcKHVuc3BlY2lmaWVkXCkpIC9UaXRsZSAoTWFoaW0gU2F0aHlhIFByYWthc2ggXDIwNSBDVikgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iagoxMCAwIG9iago8PAovQ291bnQgMSAvS2lkcyBbIDcgMCBSIF0gL1R5cGUgL1BhZ2VzCj4+CmVuZG9iagoxMSAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAyMTUxCj4+CnN0cmVhbQpHYXUwRD5CZWRcJjpWcy9RcSthLkVVYTI3SCEzTyo6WFk/JUpZKTskUDhAWDg6YThXOUE0LFJhaGlTQWYsZF9Rc0UsbVxRUCVOakdSO1peKDVTSlg7ci1vT2NTPClYaFYjdV9jaiFjdCVtREpdJyMzMW8+LWRJJExYKTBlJDA2IVUqXDk/JjJxNyRxV2dKNiolZ2MhZiZlKkZSdD9MZCJYVE9vUXJWR2lBZyIoTiYoSydPP2ZEVDwjciUqPiRZMEkjYi83R3BxJzgjIy9nQC9MLEhJaTdLWG5Sbkh1U2w9JEU3dVlwKj49T2U5UkhrO1NvVW90YDo7UVhtOixkLl1sP0FfclcvaXUrVURNI1lMJHFvJjo2Y01CNExmOC8sOl0nW0UnWTspYkNsbSMtJWpQPy4mMSwvUztKM0NSRUAoaiZlUUB1Mi8jQGtaazQ3aEZBYHRKcEZJWU1nUydSYUxYaCpLTSs4ST1AQGhwWWlvPj5wJTFKXV1XWWJCXVtMOCR1aSp1Mz4nTGsmV21YaWlxaU5SUCtEXU9aZF09WD1GXl81NyhUQGlOdCxWJTtYcUhzT0tmNSNZTnM2MnI0LWNGcWUqOD5UdCpvOmlRclUwRydFLD5SIUBIQk0nPE1hSWhOYzBtOzFnTF9fK2toL1E4LidkLmJcNTMnSy1hMVIwSUonbVZjIU1DXz9HbVVPOS0qYjQ9Ry9Lam1GblE5RjsuUyk8OXFsZmBvJS1kT2E/dCNwYC9UOU4jLGxvPV5oM0pxYl9XIlkqRU0nI2NcXVImRU5ESiFrOD06OE5pVUQzPWw4TDRtSERMNyY3cTloVzJTV3UsYEZXVmtDSEEya3MsQGonMmQ6ZGQ8SlRIVWdLaUM+Wl4nSzAtL3FmTnRjP0ZUM1FwSUVjbFQ9X3I8ZV9tbCNXJEFaXEdFKk1COi9GKmZESUQvY2BqMmMnLjNeOk9YR2U4MDhkOU9yYGBCIUE7O3I+NS5ZSVFrYiRvYF9qIVk7PDFJOGlvLChKXSJRNy9hZmcyYyQ/PU1hMUhHMjE1b2cjKlljTDFIUWZZQDEvO0d0OklyZmptWlQoND4rXkpxNi07bz42MVE3O2lHXC0xUCthIiVzPGNUczwxW1s6QWpITERpWVc/Pjc/aHI4Z09uMGBtOW1mP0NdZDJvRmt1LmlKcG5dPWZHIi5qRVVuVS07PkFKQ3FuVyhHblRaOFdhMGlLXl4rVDcmUiJIVixgKyY/aD1PaWtcM2FpTks/W2sib0xlKSQ+R1osPEI7PUsnLjk7NiFELjdoSygsK0NRODwrNjVWNkVlIlFBXGBsND5HJk4zbzZDTU1JbkxHUWMqWkwwRixYUzUnTjU4UCYjJHBaNy5xQzlVUjlQLkFYKGQoQEJYOkVDRUlxMW9lVkNyKWopbjVCSE88R1s3JTYlTjhKV3E7Zi1gWjU2cHFTW0w3TFUoQWs9O01OJnI3YmI0Y0I6U3FIcytTUU9EK2lBWjc8UCE6N0UhbydDWDI8KUwyLG9PdWE2NHJYS0dbIXExMzNfRjkvWidaNipKWE9JdShUYEMuLDhucVk2YEhuQFopSmNBWnAuRDEzR2RDS2dpODJFaFdzJChaclBhQUhQb3VIUWZKT0tMTC1yRVtiMUpwIylzKXM1X2s+ZU9AYGk7Tmc0PUg4KTtEQWBEVE9fZSU9J21CIUBLQ2NWJjRdZThjKlhvVT9FcW9FPjpsUEFJJllzLSspRCwyQjYpNlRhbjxxQGJdZEBWJm4nZFsnMUlCJlhqbHA3VnAoQlpvL0Y2UEZzWFouZiZGSVZeYyEhRTJVIkFdTExGIzlFK0hRY1RhRFJEK3IhPVBRdWoyaDc0YEVrX25fWS9hQjNiUjcwUVMrQ21dSVY/QzFpXEpgUXNfcmBodW9cQDp0NE4xRldgV3QlX2JdI1lALyJQYFU3SXErbCMuZE9UcD4xQDxYMEI4WV1HMjwmKmZzYDw0KlhCLTFsOF1aOGp1VTthWStwSU9kQlEzQXJnSCc0VG5EQTs1cUFPWDFKRSgnVzIpOHBgKVU1LVxUYDRlSG8uJ0pCYnUsZ0gzS2BxPic9PEFsTS0qXTU+JDwyXFVGYjpgYiteLGNjZklfYjVrT0ZTcypXQy05MUJFXWVeSk5oWiZrTVJFLzpZaFE+Ky5lOyxBJmBIXkxPV2M9SkQ7MTBIXF1nY2RoSy03dUxVU0plNWsmWyciRzpcT2dcLTBwclQxLEFFOiwwMlVWKnFjMz1icUBGWGJHJWsiPUdDIkQ+cCZkLlYrLlJmUCFnPlUkNWtwcGwwXmg/YFZBUCkpQENEYFpAJ1VndCJBZjQ3MDpUamhWMzBxVSYtPkdaQkNuKicnSGhWX0ZkJkRoJGhoOSh1RideN0A2RCI5VyFEVic7PD1NPXNGV2YuJGZHKTpgSCcyOnBdS091Xi4odTYhalVJPTJpWXBYLSQtVEtxQzZNQUxLO2JpMDluQVxGQFdAZm5SL2JrOTFRKixaU05xcicwWV5WKEA1SkZfQWxNJjsiP1onWiM3NVVScU9oXjRXX1tmaEAkXyRIbTk/PHQ9Yjs9dEwnSDdgW0ZBLVgjLl1oQ0YxMSVrRVtwPCMmSiVVRUdwZjg+UmY9LjZpNmVwcFBRL2BERnA/VUtUZSdKTTwwXTRlKzdVPDcmODxMV0Zpc2JBYC02RU5bJy5HTGdqKS1RJkRvMC4wZUxZITdRZ1EnKzc+SG9aXFtWIlBGIjZVQSI8MTkqY2V1cmZxclhJOSFsc3NeLydeVDA3V2NJY21QPylIUkNzRDFqMFstNl5lQll0ZzlsXD8lXSMhSUgyXFFwbzlPQy83U0k9Oj9HMl4vaThkK15tPUFYfj5lbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCAxMgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwNjEgMDAwMDAgbiAKMDAwMDAwMDExMiAwMDAwMCBuIAowMDAwMDAwMjE5IDAwMDAwIG4gCjAwMDAwMDAzMjggMDAwMDAgbiAKMDAwMDAwMDQ0MCAwMDAwMCBuIAowMDAwMDAwNjIyIDAwMDAwIG4gCjAwMDAwMDA4MDkgMDAwMDAgbiAKMDAwMDAwMTAzOCAwMDAwMCBuIAowMDAwMDAxMTA3IDAwMDAwIG4gCjAwMDAwMDE0MDkgMDAwMDAgbiAKMDAwMDAwMTQ2OSAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JRCAKWzw1ZDIzYzI5MDBiZmJmZmUwOTQwNjkxYWUwOGJlOTJhNT48NWQyM2MyOTAwYmZiZmZlMDk0MDY5MWFlMDhiZTkyYTU+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDkgMCBSCi9Sb290IDggMCBSCi9TaXplIDEyCj4+CnN0YXJ0eHJlZgozNzEyCiUlRU9GCg==';
+const savePdf=()=>{const b=Uint8Array.from(atob(CV_PDF),c=>c.charCodeAt(0)),u=URL.createObjectURL(new Blob([b],{type:'application/pdf'})),a=document.createElement('a');
+ a.href=u;a.download='Mahim_Sathya_Prakash_CV.pdf';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500)};
+$('#pdf').addEventListener('click',savePdf);
+document.addEventListener('click',e=>{if(e.target.closest('[data-dl]'))savePdf()});
+
+/* ================= Header + reveal ================= */
+const bar=$('#bar');
+const onScroll=()=>bar.classList.toggle('solid',scrollY>40);addEventListener('scroll',onScroll,{passive:true});onScroll();
+const rv=$$('.rv');
+if('IntersectionObserver' in window&&!rm){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});rv.forEach(el=>io.observe(el))}
+else rv.forEach(el=>el.classList.add('in'));
+
+/* in-page links: one controlled ease-in-out glide (cancelled the moment the user scrolls themselves) */
+const ez=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+let gl=0;
+function glide(y){cancelAnimationFrame(gl);if(rm){scrollTo(0,y);return}
+ const y0=scrollY,d=y-y0,dur=Math.min(870,Math.max(470,Math.abs(d)*.37)),t0=performance.now();
+ const st=n=>{const k=Math.min(1,(n-t0)/dur);scrollTo(0,y0+d*ez(k));if(k<1)gl=requestAnimationFrame(st)};gl=requestAnimationFrame(st)}
+['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev,()=>cancelAnimationFrame(gl),{passive:true}));
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href'),el=id.length>1&&id!=='#top'?$(id):null;
+ e.preventDefault();glide(el?el.getBoundingClientRect().top+scrollY:0);history.replaceState(null,'',id)});
+
+/* ================= Hero: name =================
+   Shows "Mahim SP". Scrolling, hovering, keyboard focus or a tap unfolds the hidden letters, decoding them
+   one by one, while the whole line scales down to stay inside its column. */
+const nm=$('#name'),full=nm.textContent.trim().replace(/\s+/g,' ');nm.setAttribute('aria-label',full);
+const [fn,mn,ln]=full.split(' ');
+nm.innerHTML=`<span class="nmw" aria-hidden="true">${fn} ${mn[0]}<span class="xp"><span class="xi" data-t="${mn.slice(1)}">${mn.slice(1)}</span></span><span class="xs"></span>${ln[0]}<span class="xp"><span class="xi" data-t="${ln.slice(1)}">${ln.slice(1)}</span></span></span>`;
+const nmw=nm.firstChild,xps=$$('.xp',nm),xis=$$('.xi',nm);
+function fitName(){nm.classList.add('measure');
+ xps.forEach(x=>x.style.setProperty('--w',Math.ceil(x.firstChild.offsetWidth)+2+'px'));
+ const fw=nmw.scrollWidth;nm.classList.remove('measure');
+ nm.style.setProperty('--k',Math.min(1,nm.clientWidth/fw).toFixed(4))}
+const GL='ABCDEFGHJKLMNPRSTUVXYZ0123456789/<>#';let scr=0;
+function decode(){cancelAnimationFrame(scr);if(rm)return;const t0=performance.now();
+ const step=t=>{const e=t-t0;let done=true;
+  xis.forEach((x,j)=>{const s=x.dataset.t;let o='';for(let i=0;i<s.length;i++){if(e>=180+j*200+i*60)o+=s[i];else{done=false;o+=GL[(Math.random()*GL.length)|0]}}x.textContent=o});
+  if(!done)scr=requestAnimationFrame(step)};scr=requestAnimationFrame(step)}
+const ns={hov:false,tap:false,foc:false,scr:false};
+function nameSync(){const o=ns.hov||ns.tap||ns.foc||ns.scr;if(nm.classList.contains('open')===o)return;nm.classList.toggle('open',o);
+ if(o)decode();else{cancelAnimationFrame(scr);xis.forEach(x=>x.textContent=x.dataset.t)}}
+let lastPT='mouse';
+nm.addEventListener('pointerdown',e=>lastPT=e.pointerType);
+nm.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){ns.hov=true;nameSync()}});
+nm.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){ns.hov=false;nameSync()}});
+nm.addEventListener('click',()=>{if(lastPT!=='mouse'){ns.tap=!nm.classList.contains('open');if(!ns.tap)ns.scr=false;nameSync()}});
+nm.addEventListener('focus',()=>{if(nm.matches(':focus-visible')){ns.foc=true;nameSync()}});
+nm.addEventListener('blur',()=>{ns.foc=false;nameSync()});
+fitName();addEventListener('resize',fitName);if(document.fonts)document.fonts.ready.then(fitName);
+
+/* ================= Hero: the particle orb =================
+   A breathing sphere of particles with an orbiting ring. Every particle has a home on the form and a
+   spring-damped offset from it. Three forces act on the offset:
+   - curl noise: a divergence-free 3D flow field (curl of simplex-noise potentials), so displaced
+     particles swirl like smoke instead of scattering in straight lines; the field is faint at rest
+     (a living shimmer) and grows with each particle's displacement;
+   - the cursor: pushes particles out of its path and spins them around it, carrying some of its velocity;
+   - the spring: pulls everything home, so the orb always re-forms.
+   The surface itself breathes: radius is displaced by a slowly moving noise field. */
+const hero=$('.hero'),cvs=$('#orb'),ctx=cvs.getContext('2d'),hint=$('#hint'),hb=$('#hb'),sl=$('#sl'),sr=$('#sr');
+const hin=$('#hin'),dim=$('#dim'),wf=$('#wf'),wg=wf.getContext('2d');
+const TAU=Math.PI*2,clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+
+/* ---------- Pin progress: 0 at the top, 1 once #work has fully covered the hero ----------
+   Scroll-linked, so it is exact rather than eased: the hero content lifts and dims, the workflow
+   layer fades, and the orb collapses into a point while the work panel slides over it. */
+let PG=0,pr_=0,PIN=1,BARH=92;
+const pin=$('.hero-pin');
+/* the pin distance is measured from layout (wrapper minus hero), so it matches the CSS exactly */
+const measurePin=()=>{PIN=Math.max(1,pin.offsetHeight-hero.offsetHeight)};
+function prog(){pr_=0;PG=clamp(scrollY/PIN);
+ ns.scr=scrollY>30;nameSync();
+ bar.classList.toggle('solid',scrollY>40);
+ const hb_=1-ez(clamp(scrollY/520));bar.style.setProperty('--hb',hb_.toFixed(3));BARH=12+8*hb_+56+16*hb_;
+ if(rm){dim.style.opacity=(PG*.7).toFixed(3);return}
+ hin.style.transform=`translate3d(0,${(-PG*56).toFixed(1)}px,0) scale(${(1-PG*.06).toFixed(4)})`;
+ hin.style.opacity=clamp(1-PG*1.25).toFixed(3);
+ dim.style.opacity=(PG*.7).toFixed(3);
+ if(PG>0)hint.classList.add('gone');
+ if(!running&&PG<.999)start()}
+addEventListener('scroll',()=>{if(!pr_)pr_=requestAnimationFrame(prog)},{passive:true});
+
+/* ---------- Network layer: a marketing workflow woven into a mesh, behind the orb ----------
+   Everything here is defined in orb units (1 = the orb's radius, origin = the orb's centre) and mapped to
+   the screen with one uniform scale, like an SVG viewBox. Every screen shows the same composition at the
+   same proportions; a narrow phone simply sees less of the sides rather than a re-packed, cramped copy.
+   - the mesh: a jittered triangular lattice anchored on the orb; it drifts gently, parts around the cursor
+     and lights up near it; lines thin out behind the orb so the centrepiece stays clear;
+   - the workflow: labelled marketing stages linked by dashed curves, with ember pulses travelling the links
+     and lighting each stage they reach. Labels that would overlap or leave the screen are dropped, in
+     priority order, so small screens declutter themselves. */
+const MKT=[['Brand approval',-.2,-.95],['Asset library (DAM)',1.3,-.92],['Campaign launch',.35,.62],['Creative request',-1.5,-.88],
+ ['A/B test',1.55,-.25],['Localization',-1.35,.2],['Email · push · in-app',1.25,.25],['Performance report',1.15,.95],
+ ['Campaign brief',-2.55,-.86],['Content review',-1.75,-.62],['Audience segment',2.05,-.62],
+ ['Marketing request',-1.1,-1.55],['Stakeholder sign-off',.2,-1.75]];
+const MKL=[[11,12],[11,3],[12,0],[8,3],[8,9],[3,0],[9,5],[0,1],[1,10],[1,4],[10,4],[4,6],[5,2],[6,2],[2,7],[12,1]];
+const GS=.46,EA=[.035,.065,.1,.16,.26,.38],eb=EA.map(()=>[]);
+let MN=[],ME=[],LN=[],LL=[],U=1,FS=10.5,wlt=0;
+function wfBuild(){
+ wf.width=Math.round(W*DPR);wf.height=Math.round(H*DPR);U=R;
+ /* lattice cells covering the visible area (plus a margin for parallax), indexed from the orb centre */
+ const i0=Math.floor((-CX/U-.8)/GS),i1=Math.ceil(((W-CX)/U+.8)/GS),j0=Math.floor((-CY/U-.8)/GS),j1=Math.ceil(((H-CY)/U+.8)/GS),at=new Map();
+ MN=[];ME=[];
+ for(let j=j0;j<=j1;j++)for(let i=i0;i<=i1;i++){const h1=hash(i,j),h2=hash(j+91,i-37);
+  at.set(i+','+j,MN.length);MN.push({bx:(i+(j&1?.5:0)+(h1-.5)*.55)*GS,by:(j+(h2-.5)*.55)*GS*.9,p:h1*TAU,ox:0,oy:0,x:0,y:0,g:0})}
+ const add=(a,b)=>{const A=at.get(a),B=at.get(b);if(A!=null&&B!=null&&hash(A,B)>.08)ME.push(A,B)};
+ for(let j=j0;j<=j1;j++)for(let i=i0;i<=i1;i++){const k=i+','+j;add(k,(i+1)+','+j);add(k,(j&1?i+1:i)+','+(j+1));add(k,(j&1?i:i-1)+','+(j+1))}
+ FS=Math.max(9,Math.min(10.5,10.5*U/240));
+ wg.font=`500 ${FS}px "Geist Mono",ui-monospace,monospace`;
+ LN=MKT.map(([l,x,y])=>({l:l.toUpperCase(),x,y,f:0,w:0}));LN.forEach(n=>n.w=wg.measureText(n.l).width+FS*1.5);
+ LL=MKL.map(([a,b])=>({a:LN[a],b:LN[b],u:hash(a,b),sp:.09+hash(b,a)*.1}))}
+const bp=[0,0];
+function wfDraw(now,alpha,still,lk,k){const t=now/1000,dt=still?0:k*.016667;
+ wg.setTransform(DPR,0,0,DPR,0,0);wg.clearRect(0,0,W,H);if(alpha<=.001)return;
+ wg.globalAlpha=alpha;
+ const ox=CX-tilt.x*18,oy=CY-tilt.y*12,pin=ptr.in&&!still&&PG<.15,pmx=(ptr.x-ox)/U,pmy=(ptr.y-oy)/U,ease=lk(.1);
+ /* mesh nodes: drift, part around the cursor, glow near it */
+ for(const n of MN){let tx=0,ty=0;n.g=0;
+  if(pin){const dx=n.bx-pmx,dy=n.by-pmy,d=Math.sqrt(dx*dx+dy*dy)||1;if(d<1.3){n.g=1-d/1.3;if(d<.95){const f=(1-d/.95)**2*.2;tx=dx/d*f;ty=dy/d*f}}}
+  n.ox+=(tx-n.ox)*ease;n.oy+=(ty-n.oy)*ease;
+  n.x=ox+(n.bx+Math.sin(t*.32+n.p)*.03+n.ox)*U;n.y=oy+(n.by+Math.cos(t*.27+n.p*1.3)*.03+n.oy)*U}
+ /* mesh edges, bucketed by brightness so each level is a single stroke */
+ for(const b of eb)b.length=0;
+ for(let e=0;e<ME.length;e+=2){const A=MN[ME[e]],B=MN[ME[e+1]],mx=(A.bx+B.bx)/2,my=(A.by+B.by)/2,r=Math.sqrt(mx*mx+my*my);
+  let a=.085*(r<1.35?Math.max(.25,(r-.85)/.5):1)*(r>3.4?Math.max(.4,1-(r-3.4)/2):1)+Math.max(A.g,B.g)**1.5*.3;
+  let lv=0;while(lv<EA.length-1&&a>EA[lv]*1.2)lv++;eb[lv].push(A,B)}
+ wg.lineWidth=1;
+ eb.forEach((b,lv)=>{if(!b.length)return;wg.strokeStyle=`rgba(237,231,225,${EA[lv]})`;wg.beginPath();for(let q=0;q<b.length;q+=2){wg.moveTo(b[q].x,b[q].y);wg.lineTo(b[q+1].x,b[q+1].y)}wg.stroke()});
+ wg.fillStyle='rgba(237,231,225,.22)';
+ for(const n of MN){const s=1.3+n.g*1.4;wg.fillRect(n.x-s/2,n.y-s/2,s,s)}
+ /* workflow links: brighter dashed curves */
+ const sx=n=>ox+n.x*U,sy=n=>oy+n.y*U;
+ wg.setLineDash([3,6]);wg.lineDashOffset=-t*10;wg.strokeStyle='rgba(237,231,225,.24)';wg.lineWidth=1.1;wg.beginPath();
+ for(const L of LL){const ax=sx(L.a),ay=sy(L.a),bx=sx(L.b),by=sy(L.b),m=(ax+bx)/2;wg.moveTo(ax,ay);wg.bezierCurveTo(m,ay,m,by,bx,by)}
+ wg.stroke();wg.setLineDash([]);
+ for(const L of LL){L.u+=dt*L.sp;if(L.u>1){L.u-=1;L.b.f=1}
+  const ax=sx(L.a),ay=sy(L.a),bx=sx(L.b),by=sy(L.b),m=(ax+bx)/2,u=L.u,s=1-u;
+  bp[0]=s*s*s*ax+3*s*s*u*m+3*s*u*u*m+u*u*u*bx;bp[1]=s*s*s*ay+3*s*s*u*ay+3*s*u*u*by+u*u*u*by;
+  wg.fillStyle='rgba(226,170,138,.14)';wg.beginPath();wg.arc(bp[0],bp[1],6,0,TAU);wg.fill();
+  wg.fillStyle='rgba(226,170,138,.95)';wg.beginPath();wg.arc(bp[0],bp[1],2,0,TAU);wg.fill()}
+ /* stages + labels, decluttered in priority order */
+ wg.font=`500 ${FS}px "Geist Mono",ui-monospace,monospace`;wg.textBaseline='middle';
+ const boxes=[],h=FS*1.9,pad=8,top=BARH+24;
+ for(const n of LN){n.f*=still?0:Math.pow(.965,k);const x=sx(n),y=sy(n);
+  if(x<-10||x>W+10||y<-10||y>H+10)continue;
+  wg.fillStyle='#0E1116';wg.strokeStyle=`rgba(237,231,225,${(.4+n.f*.3).toFixed(3)})`;wg.lineWidth=1.25;
+  wg.beginPath();wg.arc(x,y,5,0,TAU);wg.fill();wg.stroke();
+  wg.fillStyle=n.f>.08?`rgba(226,170,138,${(.45+n.f*.55).toFixed(3)})`:'rgba(237,231,225,.4)';wg.beginPath();wg.arc(x,y,2,0,TAU);wg.fill();
+  let lx=x+12;if(lx+n.w>W-pad)lx=x-12-n.w;const ly=y-h/2;
+  if(lx<pad||ly<top||ly+h>H-pad)continue;
+  if(boxes.some(b=>lx<b[2]+6&&lx+n.w>b[0]-6&&ly<b[3]+5&&ly+h>b[1]-5))continue;
+  boxes.push([lx,ly,lx+n.w,ly+h]);
+  wg.fillStyle='rgba(14,17,22,.8)';wg.strokeStyle=`rgba(${n.f>.08?'226,170,138':'237,231,225'},${(.12+n.f*.35).toFixed(3)})`;wg.lineWidth=1;
+  wg.beginPath();wg.roundRect?wg.roundRect(lx,ly,n.w,h,6):wg.rect(lx,ly,n.w,h);wg.fill();wg.stroke();
+  wg.fillStyle=`rgba(237,231,225,${(.66+n.f*.3).toFixed(3)})`;wg.fillText(n.l,lx+FS*.75,y+.5)}
+ wg.globalAlpha=1}
+
+/* 3D simplex noise (after Stefan Gustavson) */
+const SN=(()=>{const G3=[1,1,0,-1,1,0,1,-1,0,-1,-1,0,1,0,1,-1,0,1,1,0,-1,-1,0,-1,0,1,1,0,-1,1,0,1,-1,0,-1,-1];
+ const perm=new Uint8Array(512),b=[...Array(256).keys()];
+ for(let i=255;i>0;i--){const j=(Math.random()*(i+1))|0;[b[i],b[j]]=[b[j],b[i]]}
+ for(let i=0;i<512;i++)perm[i]=b[i&255];
+ const F=1/3,G=1/6;
+ const c=(x,y,z,h)=>{let t=.6-x*x-y*y-z*z;if(t<0)return 0;h=(h%12)*3;t*=t;return t*t*(G3[h]*x+G3[h+1]*y+G3[h+2]*z)};
+ return(x,y,z)=>{const s=(x+y+z)*F,i=Math.floor(x+s),j=Math.floor(y+s),k=Math.floor(z+s),t=(i+j+k)*G;
+  const x0=x-i+t,y0=y-j+t,z0=z-k+t;let i1,j1,k1,i2,j2,k2;
+  if(x0>=y0){if(y0>=z0){i1=1;j1=0;k1=0;i2=1;j2=1;k2=0}else if(x0>=z0){i1=1;j1=0;k1=0;i2=1;j2=0;k2=1}else{i1=0;j1=0;k1=1;i2=1;j2=0;k2=1}}
+  else{if(y0<z0){i1=0;j1=0;k1=1;i2=0;j2=1;k2=1}else if(x0<z0){i1=0;j1=1;k1=0;i2=0;j2=1;k2=1}else{i1=0;j1=1;k1=0;i2=1;j2=1;k2=0}}
+  const ii=i&255,jj=j&255,kk=k&255;
+  return 32*(c(x0,y0,z0,perm[ii+perm[jj+perm[kk]]])
+   +c(x0-i1+G,y0-j1+G,z0-k1+G,perm[ii+i1+perm[jj+j1+perm[kk+k1]]])
+   +c(x0-i2+2*G,y0-j2+2*G,z0-k2+2*G,perm[ii+i2+perm[jj+j2+perm[kk+k2]]])
+   +c(x0-1+3*G,y0-1+3*G,z0-1+3*G,perm[ii+1+perm[jj+1+perm[kk+1]]]))}})();
+/* curl of three offset noise potentials (forward differences: 9 samples) */
+const E=.12,curl=(x,y,z,o)=>{
+ const a=SN(x,y,z),ay=SN(x,y+E,z),az=SN(x,y,z+E);
+ const b=SN(x+31.4,y-17.1,z+9.7),bx=SN(x+31.4+E,y-17.1,z+9.7),bz=SN(x+31.4,y-17.1,z+9.7+E);
+ const c=SN(x-23.9,y+41.3,z-5.1),cx=SN(x-23.9+E,y+41.3,z-5.1),cy=SN(x-23.9,y+41.3+E,z-5.1);
+ o.cx=((cy-c)-(bz-b))/E;o.cy=((az-a)-(cx-c))/E;o.cz=((bx-b)-(ay-a))/E};
+
+let W=0,H=0,DPR=1,CX=0,CY=0,R=1,parts=[],dust=[],fc=0,running=false,vis=true,touched=false,glob=0;
+const ptr={x:-1e4,y:-1e4,vx:0,vy:0,lx:null,ly:null,in:false};
+const tilt={x:0,y:0,tx:0,ty:0};
+const NB=8,bk=Array.from({length:NB+1},()=>[]);   /* depth buckets + one "hot" bucket */
+/* back → front colour ramp (ember grey to warm white) */
+const ramp=Array.from({length:NB},(_,i)=>{const q=i/(NB-1),r=Math.round(104+q*142),g=Math.round(94+q*140),b=Math.round(88+q*136);return`rgba(${r},${g},${b},${(.22+q*.74).toFixed(3)})`});
+
+/* quality: phones get fewer particles and a lower pixel-ratio cap up front; if frames still run long,
+   the loop sheds a quarter of the particles (and then resolution) until it holds a smooth rate */
+let QDPR=2;
+function size(){const b=hero.getBoundingClientRect();W=b.width;H=b.height;const mob=W<720;
+ DPR=Math.min(mob?Math.min(1.5,QDPR):QDPR,devicePixelRatio||1);
+ cvs.width=Math.round(W*DPR);cvs.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
+ CX=W*.5;CY=H*(mob?.4:.42);R=mob?Math.min(W*.34,H*.2):Math.min(W*.19,H*.29,300)}
+function build(){const mob=W<720,N=mob?950:2300,NR=mob?210:520,ga=Math.PI*(3-Math.sqrt(5));parts=[];
+ const mk=o=>Object.assign(o,{e:0,ox:0,oy:0,oz:0,vx:0,vy:0,vz:0,cx:0,cy:0,cz:0,X:0,Y:0,Z:0});
+ for(let i=0;i<N;i++){const y=1-(i+.5)/N*2,r=Math.sqrt(1-y*y),th=i*ga,shell=Math.random()<.8;
+  parts.push(mk({k:0,hx:Math.cos(th)*r,hy:y,hz:Math.sin(th)*r,rad:shell?1+(Math.random()-.5)*.035:.3+Math.pow(Math.random(),.6)*.62}))}
+ for(let i=0;i<NR;i++){const rr=1.42+Math.pow(Math.random(),1.4)*.32;
+  parts.push(mk({k:1,th:Math.random()*TAU,rr,w:.16/Math.pow(rr,1.5),hy:(Math.random()-.5)*.035}))}
+ dust=Array.from({length:mob?70:160},()=>({x:Math.random(),y:Math.random(),z:.15+Math.random()*.85,p:Math.random()*TAU}))}
+
+const RX=.62,RZ=-.32,crx=Math.cos(RX),srx=Math.sin(RX),crz=Math.cos(RZ),srz=Math.sin(RZ),FOC=3.4;
+function frame(now,still){const t=now/1000;fc++;
+ /* k: this frame's length in 60fps frames, so 60Hz, 120Hz and throttled tabs all move at the same speed */
+ const gap=now-(frame.ln||0);frame.ln=now;const k=Math.min(3,Math.max(.1,gap/16.667));
+ const lk=a=>1-Math.pow(1-a,k),dk=a=>Math.pow(a,k);
+ tilt.x+=(tilt.tx-tilt.x)*lk(.05);tilt.y+=(tilt.ty-tilt.y)*lk(.05);
+ const ec=1-Math.pow(1-PG,2.4),cf=1-.94*ec;   /* collapse factor: the form contracts to a point as #work covers it */
+ wfDraw(now,1-ez(clamp(PG*1.7)),still,lk,k);
+ ptr.vx*=dk(.86);ptr.vy*=dk(.86);glob=Math.min(1,glob*dk(.95)+Math.hypot(ptr.vx,ptr.vy)/R*.08*k);
+
+ /* trails fade at a fixed rate per second; after a long gap (throttled tab, slow device) start clean
+    so the rotated orb never ghosts into a cloud */
+ if(still||gap>80)ctx.clearRect(0,0,W,H);
+ else{ctx.globalCompositeOperation='destination-out';ctx.fillStyle=`rgba(0,0,0,${lk(.62).toFixed(3)})`;ctx.fillRect(0,0,W,H);ctx.globalCompositeOperation='source-over'}
+
+ /* far layer: slow dust that parallaxes less than the orb */
+ for(const d of dust){const x=d.x*W-tilt.x*34*d.z+Math.sin(t*.07+d.p)*14,y=d.y*H-tilt.y*22*d.z+Math.cos(t*.05+d.p)*10;
+  ctx.fillStyle=`rgba(237,231,225,${(.05+d.z*.16).toFixed(3)})`;const s=.6+d.z*1.1;ctx.fillRect(x,y,s,s)}
+
+ const yaw=t*.12+tilt.x*.7+ec*2.4,pitch=-.28+tilt.y*.45,cy_=Math.cos(yaw),sy_=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+ const ry=tilt.x*.5,cry=Math.cos(ry),sry=Math.sin(ry);
+ const br=1+.026*Math.sin(t*1.05)+.01*Math.sin(t*2.6+1);
+ const act=ptr.in&&!still&&PG<.15,mx=(ptr.x-CX)/R,my=(ptr.y-CY)/R,RR=.55,RR2=RR*RR,pvx=ptr.vx/R,pvy=ptr.vy/R;
+ for(const b of bk)b.length=0;
+
+ for(let i=0,n=parts.length;i<n;i++){const p=parts[i];let x,y,z;
+  if(p.k===0){
+   const nz=SN(p.hx*1.25+t*.12,p.hy*1.25-t*.05,p.hz*1.25+t*.08),r=p.rad*br*(1+nz*.09);
+   x=p.hx*r;y=p.hy*r;z=p.hz*r;
+   const x1=x*cy_+z*sy_,z1=-x*sy_+z*cy_;x=x1;z=z1;
+  }else{
+   const a=p.th+t*p.w;x=Math.cos(a)*p.rr*br;z=Math.sin(a)*p.rr*br;y=p.hy;
+   let y1=y*crx-z*srx,z1=y*srx+z*crx;y=y1;z=z1;
+   const x2=x*crz-y*srz,y2=x*srz+y*crz;x=x2;y=y2;
+   const x3=x*cry+z*sry,z3=-x*sry+z*cry;x=x3;z=z3;
+  }
+  {const y1=y*cp-z*sp,z1=y*sp+z*cp;y=y1;z=z1}
+
+  if(!still){
+   /* flow field: refresh half the particles each frame */
+   if(((i+fc)&1)===0)curl(x*.85,y*.85,z*.85+t*.06,p);
+   /* swirl strength comes from energy the cursor/pulse injected (decays), never from displacement
+      itself — that would feed back and blow the orb apart */
+   p.e*=dk(.982);const ca=(.00010+p.e*.0011+glob*.00025)*k;
+   p.vx+=p.cx*ca;p.vy+=p.cy*ca;p.vz+=p.cz*ca;
+   if(act){const X=x+p.ox,Y=y+p.oy,Z=z+p.oz,pr=FOC/(FOC-Z),dx=X*pr-mx,dy=Y*pr-my,d2=dx*dx+dy*dy;
+    if(d2<RR2){const d=Math.sqrt(d2)||.001,f=(1-d/RR)**2*k;
+     p.vx+=(dx/d*.012-dy/d*.011)*f+pvx*.05*f;
+     p.vy+=(dy/d*.012+dx/d*.011)*f+pvy*.05*f;
+     p.vz+=(Z>0?.008:-.004)*f;p.e=Math.min(1,p.e+f*.25)}}
+   const sk=.014*k,dm=dk(.915);
+   p.vx-=p.ox*sk;p.vy-=p.oy*sk;p.vz-=p.oz*sk;
+   p.vx*=dm;p.vy*=dm;p.vz*=dm;
+   p.ox+=p.vx*k;p.oy+=p.vy*k;p.oz+=p.vz*k}
+
+  const X=x+p.ox,Y=y+p.oy,Z=z+p.oz;p.X=X;p.Y=Y;p.Z=Z;
+  const pr=FOC/(FOC-Z),q=Math.max(0,Math.min(.999,(Z+1.8)/3.6));
+  const hot=!still&&(p.vx*p.vx+p.vy*p.vy)>.00012;
+  bk[hot?NB:(q*NB)|0].push(CX+X*pr*R*cf,CY+Y*pr*R*cf,(.5+q*1.45)*pr*(p.k?.8:1))}
+
+ for(let b=0;b<=NB;b++){const a=bk[b];if(!a.length)continue;ctx.fillStyle=b===NB?'rgba(226,170,138,.85)':ramp[b];
+  for(let j=0;j<a.length;j+=3){const s=a[j+2];ctx.fillRect(a[j]-s/2,a[j+1]-s/2,s,s)}}
+
+ /* depth layers: the side notes and the name drift against the tilt */
+ if(!still){
+  hb.style.transform=`translate3d(${(-tilt.x*14).toFixed(2)}px,${(-tilt.y*8).toFixed(2)}px,0)`;
+  sl.style.transform=`translate3d(${(tilt.x*10).toFixed(2)}px,${(tilt.y*8).toFixed(2)}px,0)`;
+  sr.style.transform=`translate3d(${(tilt.x*10).toFixed(2)}px,${(tilt.y*8).toFixed(2)}px,0)`;
+  hero.style.setProperty('--px',(tilt.x*-18).toFixed(2)+'px');hero.style.setProperty('--py',(tilt.y*-12).toFixed(2)+'px')}}
+
+/* once #work fully covers the hero, stop drawing; scrolling back up restarts it */
+/* one loop at a time: each start() bumps a generation, and stale chains exit */
+let gen=0;
+let ema=16.7,slow=0,lastL=0;
+function adapt(now){const gap=now-lastL;lastL=now;if(gap>100)return;   /* ignore resumes after a pause */
+ ema+=(gap-ema)*.05;if(ema<24){slow=0;return}
+ if(++slow<90)return;slow=0;ema=16.7;
+ if(parts.length>900)parts=parts.filter((_,i)=>i%4!==3);
+ else if(QDPR>1){QDPR=1;size();wfBuild()}}
+function loop(now,g){if(!running||g!==gen)return;if(PG>=.999){running=false;return}adapt(now);frame(now,false);requestAnimationFrame(n=>loop(n,g))}
+function start(){if(running||rm||!vis||document.hidden)return;running=true;const g=++gen;requestAnimationFrame(n=>loop(n,g))}
+function stop(){running=false}function still(){for(const p of parts){p.ox=p.oy=p.oz=0}frame(4000,true)}
+
+/* pointer: position in canvas space, velocity, and a whole-page tilt target */
+const toLocal=e=>{const b=cvs.getBoundingClientRect();return[(e.clientX-b.left)/b.width*W,(e.clientY-b.top)/b.height*H]};
+addEventListener('pointermove',e=>{
+ tilt.tx=e.clientX/innerWidth-.5;tilt.ty=e.clientY/innerHeight-.5;
+ const hb_=hero.getBoundingClientRect();
+ if(e.clientY>hb_.bottom||e.clientY<hb_.top){ptr.in=false;ptr.lx=null;return}
+ const[x,y]=toLocal(e);
+ if(ptr.lx!==null){ptr.vx=ptr.vx*.5+(x-ptr.lx)*.5;ptr.vy=ptr.vy*.5+(y-ptr.ly)*.5}
+ ptr.x=ptr.lx=x;ptr.y=ptr.ly=y;ptr.in=true;
+ if(!touched&&Math.hypot(x-CX,y-CY)<R*1.1){touched=true;setTimeout(()=>hint.classList.add('gone'),1200)}},{passive:true});
+document.documentElement.addEventListener('pointerleave',()=>{ptr.in=false;ptr.lx=null;tilt.tx=tilt.ty=0});
+addEventListener('pointercancel',()=>{ptr.in=false;ptr.lx=null});
+/* click / tap inside the orb: a pulse pushes every particle outward, then the springs pull it back */
+hero.addEventListener('pointerdown',e=>{if(rm||e.target.closest('a,button'))return;const[x,y]=toLocal(e);
+ if(Math.hypot(x-CX,y-CY)>R*1.6)return;
+ for(const p of parts){const l=Math.sqrt(p.X*p.X+p.Y*p.Y+p.Z*p.Z)||1,k=.045+Math.random()*.05;p.vx+=p.X/l*k;p.vy+=p.Y/l*k;p.vz+=p.Z/l*k;p.e=.8}
+ glob=1;if(!touched){touched=true;setTimeout(()=>hint.classList.add('gone'),900)}});
+
+size();build();wfBuild();measurePin();prog();
+if(rm)still();else start();
+if(document.fonts)document.fonts.ready.then(()=>{wfBuild();if(rm)still()});
+let rt=0;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{const ow=W;size();if(Math.abs(W-ow)>40||!parts.length)build();wfBuild();measurePin();prog();if(rm)still()},120)});
+new IntersectionObserver(([e])=>{vis=e.isIntersecting;vis?start():stop()}).observe(hero);
+document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+})();
+</script>
+</body>
+</html>
